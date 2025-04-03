@@ -8,7 +8,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 const MovieSlider = ({ category }) => {
 	const { contentType } = useContentStore();
 	const [content, setContent] = useState([]);
-	const [showArrows, setShowArrows] = useState(false);
+	
 
 	const sliderRef = useRef(null);
 
@@ -37,8 +37,7 @@ const MovieSlider = ({ category }) => {
 	return (
 		<div
 			className='bg-black text-white relative px-5 md:px-20'
-			onMouseEnter={() => setShowArrows(true)}
-			onMouseLeave={() => setShowArrows(false)}
+			
 		>
 			<h2 className='mb-4 text-2xl font-bold'>
 				{formattedCategoryName} {formattedContentType}
@@ -59,7 +58,7 @@ const MovieSlider = ({ category }) => {
 				))}
 			</div>
 
-			{showArrows && (
+			
 				<>
 					<button
 						className='absolute top-1/2 -translate-y-1/2 left-5 md:left-24 flex items-center justify-center
@@ -79,7 +78,7 @@ const MovieSlider = ({ category }) => {
 						<ChevronRight size={24} />
 					</button>
 				</>
-			)}
+			
 		</div>
 	);
 };

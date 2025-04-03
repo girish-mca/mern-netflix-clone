@@ -17,7 +17,7 @@ const WatchPage = () => {
 	const [content, setContent] = useState({});
 	const [similarContent, setSimilarContent] = useState([]);
 	const { contentType } = useContentStore();
-	const [showArrows, setShowArrows] = useState(false);
+	
 
 	const sliderRef = useRef(null);
 
@@ -200,7 +200,7 @@ const WatchPage = () => {
 								);
 							})}
 
-{showArrows && (
+
 				<>
 					<button
 						className='absolute top-1/2 -translate-y-1/2 left-5 md:left-24 flex items-center justify-center
@@ -220,7 +220,7 @@ const WatchPage = () => {
 						<ChevronRight size={24} />
 					</button>
 				</>
-			)}
+			
 						</div>
 					</div>
 				)}
