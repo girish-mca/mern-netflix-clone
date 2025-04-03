@@ -17,6 +17,7 @@ const WatchPage = () => {
 	const [content, setContent] = useState({});
 	const [similarContent, setSimilarContent] = useState([]);
 	const { contentType } = useContentStore();
+	const [showArrows, setShowArrows] = useState(false);
 
 	const sliderRef = useRef(null);
 
@@ -179,7 +180,9 @@ const WatchPage = () => {
 				</div>
 
 				{similarContent.length > 0 && (
-					<div className='mt-12 max-w-5xl mx-auto relative'>
+					<div className='mt-12 max-w-5xl mx-auto relative'
+					onMouseEnter={() => setShowArrows(true)}
+					onMouseLeave={() => setShowArrows(false)}>
 						<h3 className='text-3xl font-bold mb-4'>Similar Movies/Tv Show</h3>
 
 						<div className='flex overflow-x-hidden scrollbar-hide gap-4 pb-4 group' ref={sliderRef}>
@@ -197,18 +200,27 @@ const WatchPage = () => {
 								);
 							})}
 
-							<ChevronRight
-								className='absolute top-1/2 -translate-y-1/2 right-2 w-8 h-8
-										opacity-0 group-hover:opacity-100 transition-all duration-300 cursor-pointer
-										 bg-red-600 text-white rounded-full'
-								onClick={scrollRight}
-							/>
-							<ChevronLeft
-								className='absolute top-1/2 -translate-y-1/2 left-2 w-8 h-8 opacity-0 
-								group-hover:opacity-100 transition-all duration-300 cursor-pointer bg-red-600 
-								text-white rounded-full'
-								onClick={scrollLeft}
-							/>
+{showArrows && (
+				<>
+					<button
+						className='absolute top-1/2 -translate-y-1/2 left-5 md:left-24 flex items-center justify-center
+            size-12 rounded-full bg-black bg-opacity-50 hover:bg-opacity-75 text-white z-10
+            '
+						onClick={scrollLeft}
+					>
+						<ChevronLeft size={24} />
+					</button>
+
+					<button
+						className='absolute top-1/2 -translate-y-1/2 right-5 md:right-24 flex items-center justify-center
+            size-12 rounded-full bg-black bg-opacity-50 hover:bg-opacity-75 text-white z-10
+            '
+						onClick={scrollRight}
+					>
+						<ChevronRight size={24} />
+					</button>
+				</>
+			)}
 						</div>
 					</div>
 				)}
